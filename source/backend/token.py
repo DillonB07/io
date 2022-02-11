@@ -88,8 +88,7 @@ class IoToken:
             elif char == t_equal:
                 token = tokens[11]
             elif type(char) == t_string:
-                if char != " " or char != "" or char != "  ":
-                    token = tokens[0]
+                token = tokens[0]
             else:
                 raise UnfoundVariable("no such variable exists!")
 
@@ -97,14 +96,14 @@ class IoToken:
                 # word = "".join(ltoken_word)
                 # print(word)
                 dict_num += 1
-                word = line + "\uFE61" + str(dict_num)
+                word = f'{line}﹡' + str(dict_num)
                 ltokens[word] = token
-                # ltokens.update({word:token})
-                # print(ltokens)
+                        # ltokens.update({word:token})
+                        # print(ltokens)
 
-                    # print(token, end=" ")
-                    # ltoken_word.append(char)
-                    # print(ltoken_word)
+                            # print(token, end=" ")
+                            # ltoken_word.append(char)
+                            # print(ltoken_word)
 
         self.ltokens = ltokens
 

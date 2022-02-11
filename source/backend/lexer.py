@@ -15,33 +15,25 @@ def group(seq, sep):
 
 class IoLexer:
     def __init__(self, data, lexing=True):
-          if lexing == True:
-              global cline
-              global ltokens
-              cline = 0
-
-              file = data# f.read()
-              content = file.split("\n")
-              content2 = file.split()
+        if lexing == True:
+            global cline
+            global ltokens
+            file = data# f.read()
+            content = file.split("\n")
+            content2 = file.split()
               # print(content)
 
-              for i in content:
-                  cline += 1
-                  if i.startswith("#"):
-                      i = ""
-                      pass
-                  elif "#" in i:
-                      findcom = i.find("#")
-                      if findcom == -1:
-                          pass
-                      else:
-                          i = i[:findcom]  # This discards comments
-                          # print(i)
+            for i in content:
+                if i.startswith("#"):
+                    i = ""
+                elif "#" in i:
+                    findcom = i.find("#")
+                    if findcom != -1:
+                        i = i[:findcom]  # This discards comments
+                line = i
 
-                  line = i
-              
-              self.line = line
-          else:
+            self.line = line
+        else:
             exception = "lexing is not allowed!"
             error = "error: <invalid lexing>".center(40)
             print(f"{bold}{Red}{error}{reset}{Red}\n\t-> line {cline}: {underline}{exception}{reset}")
